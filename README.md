@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Luxtag Mobile Live Preview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Vikum Wijekoon
 
-## Available Scripts
+## How to use
 
-In the project directory, you can run:
+- Execute `yarn install` and then `yarn run` to start.
 
-### `yarn start`
+## Project Management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Jira was used to manage the project.
+- Semantic commit messages were used to highlight commits.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## State structure
 
-### `yarn test`
+![Untitled Document](https://user-images.githubusercontent.com/13465801/130836111-650e641d-399f-4538-a951-e0b91be8823d.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- App was used as the main state container.
+- DesktopContainer was used as the container the editor as well as MobileView with frame in desktop mode which used props to access it.
+- MobileView (which showcases the mobile app) accessed the article and heading state through Context API.
 
-### `yarn build`
+## General Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Multi-article support with up to 5 different articles (Can be extended to any amount).
+- Usage of hooks and functional components.
+- Coded in typescript.
+- MobileView supports proper content overflow with custom made scrollbar.
+- Dompurify was used to sanitize HTML.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Optimizations &amp; Readability Enhancements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Typescript was used to reduce runtime errors and general readiblity enhancement.
+- Memoization was used to stop unnecessary renders.
+- Context API was used to reduce prop drilling.
+- Ducks style folder organization based on features.
+- CSS were split into different files.
+- BEM Naming convention was used.
+- When switching between Mobile and Desktop version, Desktop UI gets fully unmounted.
+- Multiple articles are stored in sessionStorage and fetched when needed to avoid creating a massive state object.
+- Custom made iPhone X frame was used to reduce loading times. (2kb svg file).
 
-### `yarn eject`
+## Multi Article Support
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Multi article support was added using sessionStorage as a method to store articles which are not in view.
+- Select component can switch between 5 different articles. A useEffect hook triggers when the article changes which stores current article to sessionStorage and retrieves the new article from sessionStorage if it exists.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Untitled Document (1)](https://user-images.githubusercontent.com/13465801/130836145-4afde8a0-526d-46c4-b15a-c9757bcbe2a4.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## External Libraries used
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **React quill**
+  - React quill was used as the main editor interface.
+  - Its lightweight design and customizability were the main reasons for its use.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Dompurify**
+  - Dompurify was used to sanitize the html string outputted by the editor.
+  - Since React&#39;s _dangerouslySetInnerHTML_ is prone to XSS attacks, this was used to mitigate them.
+- **React-select**
+  - This library was used to select different articles.
+  - Even though an HTML element would suffice, this library makes its execution easier and has a lot of customizability aspects that was used to implement the app.
+- **React-responsive**
+  - This library was used to trigger the change in mobile and desktop interfaces.
