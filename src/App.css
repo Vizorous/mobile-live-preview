@@ -57,6 +57,19 @@
 }
 
 @media only screen and (min-width: 769px) {
+  .toolbar__select {
+    margin-bottom: 16px;
+  }
+  .react-select__control {
+    font-weight: 700 !important;
+    background-color: #efefef !important;
+  }
+  .react-select__indicator {
+    color: black !important;
+  }
+  .react-select__indicator-separator {
+    display: none !important;
+  }
   .editor__container {
     height: 35vh;
     width: 40vw;

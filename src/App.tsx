@@ -26,7 +26,11 @@ function App() {
         {isMobile ? (
           <MobileContainer />
         ) : (
-          <DesktopContainer value={value} setValue={setValue} />
+          <DesktopContainer
+            value={value}
+            setValue={setValue}
+            setHeading={setHeading}
+          />
         )}
       </ArticleContext.Provider>
     </div>
