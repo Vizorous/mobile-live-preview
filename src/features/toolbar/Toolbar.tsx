@@ -8,7 +8,6 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     <>
       <div id="toolbar-container">
         <span className="ql-formats">
-          <select className="ql-font"></select>
           <select className="ql-size"></select>
         </span>
         <span className="ql-formats">
