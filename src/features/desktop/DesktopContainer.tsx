@@ -3,42 +3,19 @@ import MobileContainer from "../mobile/MobileContainer";
 import "react-quill/dist/quill.snow.css";
 import Select from "react-select";
 import usePrevious from "../common/usePrevious";
-import options from "./selectOptions";
+import options, { IOption } from "./selectOptions";
 import Editor from "./Editor";
 import Button from "./Button";
 
 interface DesktopContainerProps {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  article: string;
+  selectedOption: IOption;
+  setSelectedOption: React.Dispatch<React.SetStateAction<IOption>>;
+  setArticle: React.Dispatch<React.SetStateAction<string>>;
   setHeading: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
-  const prevSelection = usePrevious(selectedOption);
-
-  useEffect(() => {
-    sessionStorage.setItem("currentArticle", selectedOption.value);
-
-    if (prevSelection) {
-      sessionStorage.setItem(prevSelection.value, props.value);
-    }
-    const newVal = sessionStorage.getItem(selectedOption.value);
-    props.setValue(newVal !== null ? newVal : "");
-    props.setHeading(selectedOption.value);
-  }, [selectedOption]);
-
-  // This effect recreates the state when size is switched from mobile to app
-  useLayoutEffect(() => {
-    const currentArticle = sessionStorage.getItem("currentArticle");
-    if (currentArticle) {
-      const index = options.findIndex((value) =>
-        value.value === currentArticle ? true : false
-      );
-      setSelectedOption(options[index]);
-    }
-  }, []);
-
   return (
     <>
       <div className="desktop__container">
@@ -47,13 +24,15 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
             classNamePrefix="react-select"
             className="toolbar__select"
             options={options}
-            value={selectedOption}
+            value={props.selectedOption}
             defaultValue={options[0]}
             onChange={(val) =>
-              setSelectedOption(val !== null ? val : options[0])
+              props.setSelectedOption(val !== null ? val : options[0])
             }></Select>
 
-          <Editor setValue={props.setValue} value={props.value}></Editor>
+          <Editor
+            setArticle={props.setArticle}
+            article={props.article}></Editor>
 
           <Button></Button>
         </div>

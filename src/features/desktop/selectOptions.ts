@@ -1,5 +1,5 @@
 
-interface IOption {
+export interface IOption {
     value: string;
     label: string;
 }

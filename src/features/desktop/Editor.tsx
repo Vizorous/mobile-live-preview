@@ -3,8 +3,8 @@ import ReactQuill from "react-quill";
 import CustomToolbar, { modules } from "../toolbar/CustomToolbar";
 
 interface EditorProps {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  article: string;
+  setArticle: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Editor: React.FC<EditorProps> = (props) => {
@@ -14,8 +14,8 @@ const Editor: React.FC<EditorProps> = (props) => {
       <ReactQuill
         className="editor__container"
         theme="snow"
-        value={props.value}
-        onChange={props.setValue}
+        value={props.article}
+        onChange={props.setArticle}
         modules={modules}
       />
     </>
