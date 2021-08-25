@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { ArticleContext } from "../desktop/DesktopContainer";
+import DOMPurify from "dompurify";
 
 interface MobileViewProps {}
 
 const MobileView: React.FC<MobileViewProps> = (props) => {
   const value = useContext(ArticleContext);
-  // ! utilizing dangerouslySetInnerHTML, sanitize the input
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: value }}></div>
+      <div
+        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(value) }}></div>
     </>
   );
 };
