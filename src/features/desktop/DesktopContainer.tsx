@@ -53,6 +53,10 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
             onChange={props.setValue}
             modules={modules}
           />
+          <button className="toolbar__btn">
+            {`Publish          `}
+            <span style={{ fontFamily: "sans-serif" }}>&gt;</span>
+          </button>
         </div>
 
         <div className="mobile">
