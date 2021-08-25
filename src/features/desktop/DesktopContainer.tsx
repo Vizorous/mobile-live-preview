@@ -4,13 +4,12 @@ import MobileContainer from "../mobile/MobileContainer";
 import "react-quill/dist/quill.snow.css";
 import Toolbar, { modules } from "../toolbar/Toolbar";
 
-interface DesktopContainerProps {}
-
-export const ArticleContext = React.createContext<any>(null);
+interface DesktopContainerProps {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+}
 
 const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
-  const [value, setValue] = useState("");
-
   return (
     <>
       <div className="desktop__container">
@@ -19,16 +18,14 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
           <ReactQuill
             className="editor__container"
             theme="snow"
-            value={value}
-            onChange={setValue}
+            value={props.value}
+            onChange={props.setValue}
             modules={modules}
           />
         </div>
 
         <div className="mobile">
-          <ArticleContext.Provider value={value}>
-            <MobileContainer withFrame={true}></MobileContainer>
-          </ArticleContext.Provider>
+          <MobileContainer withFrame={true}></MobileContainer>
         </div>
       </div>
     </>
