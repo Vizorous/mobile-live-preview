@@ -13,17 +13,24 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
 
   return (
     <>
-      <Toolbar></Toolbar>
-      <ReactQuill
-        theme="snow"
-        value={value}
-        onChange={setValue}
-        modules={modules}
-      />
+      <div className="desktop__container">
+        <div className="toolbar">
+          <Toolbar></Toolbar>
+          <ReactQuill
+            className="editor__container"
+            theme="snow"
+            value={value}
+            onChange={setValue}
+            modules={modules}
+          />
+        </div>
 
-      <ArticleContext.Provider value={value}>
-        <MobileContainer withFrame={true}></MobileContainer>
-      </ArticleContext.Provider>
+        <div className="mobile">
+          <ArticleContext.Provider value={value}>
+            <MobileContainer withFrame={true}></MobileContainer>
+          </ArticleContext.Provider>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,4 +1,7 @@
-.mobile {
+:root {
+  --frame-height: 70vh;
+}
+.mobile__container {
   width: 100%;
   height: 100%;
 }
@@ -18,27 +21,45 @@
   pointer-events: none;
 }
 .mobile__frame-img {
-  height: 80vh;
+  height: var(--frame-height);
 }
 @media only screen and (min-width: 769px) {
-  .mobile__bg {
-    height: 80vh;
-    aspect-ratio: 9/19;
-    width: auto;
-    border-radius: 50px;
+  .editor__container {
+    height: 40vh;
   }
-  .mobile__display {
-    /* These values are taken to position the content within the frame */
-    margin: calc(80vh * 0.0672) calc(80vh * 0.02635) calc(80vh * 0.0295)
-      calc(80vh * 0.01635);
-    padding: 1% 2.5%;
-    height: calc(80vh * 0.9033);
-    word-wrap: break-word;
+  .desktop__container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .toolbar {
+    padding: 0 3% 0 10%;
+    width: 50vw;
   }
   .mobile {
+    padding: 0 10% 0 3%;
+
     width: 50vw;
+  }
+  .mobile__container {
     display: flex;
     justify-content: center;
     height: fit-content;
   }
+}
+.mobile__bg {
+  height: var(--frame-height);
+  aspect-ratio: 9/19;
+  width: auto;
+  border-radius: 50px;
+}
+.mobile__display {
+  /* These values are taken to position the content within the frame */
+  margin: calc(var(--frame-height) * 0.0672) calc(var(--frame-height) * 0.02635)
+    calc(var(--frame-height) * 0.0295) calc(var(--frame-height) * 0.01635);
+  padding: 1% 2.5%;
+  height: calc(var(--frame-height) * 0.9033);
+  word-wrap: break-word;
 }

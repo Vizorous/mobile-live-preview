@@ -8,7 +8,7 @@ interface MobileContainerProps {
 const MobileContainer: React.FC<MobileContainerProps> = (props) => {
   return (
     <>
-      <div className="mobile">
+      <div className="mobile__container">
         <div className="mobile__bg">
           <div className="mobile__display">
             <MobileView></MobileView>
