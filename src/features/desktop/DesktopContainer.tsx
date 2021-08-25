@@ -20,6 +20,8 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
     <>
       <div className="desktop__container">
         <div className="toolbar">
+          <h3>Customisation</h3>
+          <p>The text will reflect mobile view</p>
           <Select
             classNamePrefix="react-select"
             className="toolbar__select"
