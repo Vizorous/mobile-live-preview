@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import MobileFrame from "./MobileFrame";
 import MobileView from "./MobileView";
 interface MobileContainerProps {

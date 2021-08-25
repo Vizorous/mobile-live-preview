@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import MobileContainer from "../mobile/MobileContainer";
 import "react-quill/dist/quill.snow.css";
-import Toolbar, { modules } from "../toolbar/Toolbar";
 import Select from "react-select";
 import usePrevious from "../common/usePrevious";
+import options from "./selectOptions";
+import Editor from "./Editor";
+import Button from "./Button";
 
-const options = [
-  { value: "Text 1", label: "Text 1" },
-  { value: "Text 2", label: "Text 2" },
-  { value: "Text 3", label: "Text 3" },
-  { value: "Text 4", label: "Text 4" },
-  { value: "Text 5", label: "Text 5" },
-];
 interface DesktopContainerProps {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -24,6 +18,8 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
   const prevSelection = usePrevious(selectedOption);
 
   useEffect(() => {
+    sessionStorage.setItem("currentArticle", selectedOption.value);
+
     if (prevSelection) {
       sessionStorage.setItem(prevSelection.value, props.value);
     }
@@ -31,6 +27,18 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
     props.setValue(newVal !== null ? newVal : "");
     props.setHeading(selectedOption.value);
   }, [selectedOption]);
+
+  // This effect recreates the state when size is switched from mobile to app
+  useLayoutEffect(() => {
+    const currentArticle = sessionStorage.getItem("currentArticle");
+    if (currentArticle) {
+      const index = options.findIndex((value) =>
+        value.value === currentArticle ? true : false
+      );
+      console.log(index);
+      setSelectedOption(options[index]);
+    }
+  }, []);
 
   return (
     <>
@@ -45,18 +53,10 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
             onChange={(val) =>
               setSelectedOption(val !== null ? val : options[0])
             }></Select>
-          <Toolbar></Toolbar>
-          <ReactQuill
-            className="editor__container"
-            theme="snow"
-            value={props.value}
-            onChange={props.setValue}
-            modules={modules}
-          />
-          <button className="toolbar__btn">
-            {`Publish          `}
-            <span style={{ fontFamily: "sans-serif" }}>&gt;</span>
-          </button>
+
+          <Editor setValue={props.setValue} value={props.value}></Editor>
+
+          <Button></Button>
         </div>
 
         <div className="mobile">

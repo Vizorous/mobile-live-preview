@@ -1,9 +1,9 @@
 import React from "react";
 import CustomRedo from "./CustomRedo";
 import CustomUndo from "./CustomUndo";
-interface ToolbarProps {}
+interface CustomToolbarProps {}
 
-const Toolbar: React.FC<ToolbarProps> = (props) => {
+const CustomToolbar: React.FC<CustomToolbarProps> = (props) => {
   return (
     <>
       <div id="toolbar-container">
@@ -72,7 +72,7 @@ function redoChange() {
   this.quill.history.redo();
 }
 
-export default React.memo(Toolbar);
+export default React.memo(CustomToolbar);
 export const modules = {
   toolbar: {
     container: "#toolbar-container",

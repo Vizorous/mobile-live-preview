@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function usePrevious<T>(value: T): T {
     // The ref object is a generic container whose current property is mutable ...
