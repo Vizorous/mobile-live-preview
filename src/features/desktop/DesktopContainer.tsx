@@ -35,7 +35,6 @@ const DesktopContainer: React.FC<DesktopContainerProps> = (props) => {
       const index = options.findIndex((value) =>
         value.value === currentArticle ? true : false
       );
-      console.log(index);
       setSelectedOption(options[index]);
     }
   }, []);
