@@ -1,0 +1,25 @@
+.react-select__control {
+  font-weight: 700 !important;
+  background-color: #efefef !important;
+}
+.react-select__indicator {
+  color: black !important;
+}
+.react-select__indicator-separator {
+  display: none !important;
+}
+.editor__container {
+  height: 35vh;
+  width: 40vw;
+}
+.desktop__container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.toolbar {
+  padding: 0 2% 0 10%;
+  width: 50vw;
+}
