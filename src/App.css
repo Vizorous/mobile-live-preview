@@ -11,14 +11,30 @@
   width: 100vw;
   height: 100vh;
 }
-
+.mobile__frame {
+  position: absolute;
+  z-index: 2;
+  width: fit-content;
+  pointer-events: none;
+}
+.mobile__frame-img {
+  height: 80vh;
+}
 @media only screen and (min-width: 769px) {
   .mobile__bg {
     height: 80vh;
     aspect-ratio: 9/19;
     width: auto;
+    border-radius: 50px;
   }
-
+  .mobile__display {
+    /* These values are taken to position the content within the frame */
+    margin: calc(80vh * 0.0672) calc(80vh * 0.02635) calc(80vh * 0.0295)
+      calc(80vh * 0.01635);
+    padding: 1% 2.5%;
+    height: calc(80vh * 0.9033);
+    word-wrap: break-word;
+  }
   .mobile {
     width: 50vw;
     display: flex;

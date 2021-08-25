@@ -1,4 +1,5 @@
 import React from "react";
+import MobileFrame from "./MobileFrame";
 
 interface MobileContainerProps {
   withFrame?: boolean;
@@ -9,9 +10,11 @@ const MobileContainer: React.FC<MobileContainerProps> = (props) => {
     <>
       <div className="mobile">
         <div className="mobile__bg">
-          <div className="mobile__display"></div>
+          <div className="mobile__display">
+            <div>testing text</div>
+          </div>
         </div>
-        {props.withFrame ? <div>placeholder, with frame</div> : null}
+        {props.withFrame ? <MobileFrame /> : null}
       </div>
     </>
   );
