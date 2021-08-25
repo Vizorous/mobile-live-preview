@@ -11,6 +11,7 @@ const MobileView: React.FC<MobileViewProps> = (props) => {
       <div className="mobile__white-container">
         <h4 className="mobile__heading">Text </h4>
         <div
+          className="mobile__content"
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(value) }}></div>
       </div>
     </>

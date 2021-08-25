@@ -5,6 +5,20 @@
   width: 100vw;
   height: 100vh;
 }
+
+.mobile__content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.mobile__content::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: #00000044;
+}
+.mobile__content {
+  overflow-y: auto;
+  height: 100%;
+  padding-bottom: 20px;
+}
 .mobile__container {
   width: 100%;
   height: 100%;
@@ -14,10 +28,12 @@
   padding: 10vh 5% 0 5%;
 }
 .mobile__white-container {
+  display: flex;
+  flex-direction: column;
+
   background-color: white;
-  padding: 3%;
+  padding: 3% 3% 10% 3%;
   height: 70vh;
-  overflow-y: auto;
   border-radius: 16px;
 }
 .mobile__bg {
