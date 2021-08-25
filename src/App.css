@@ -1,18 +1,27 @@
 :root {
   --frame-height: 70vh;
 }
+.app {
+  width: 100vw;
+  height: 100vh;
+}
 .mobile__container {
   width: 100%;
   height: 100%;
+}
+
+.mobile__white-container {
+  margin: 15% 3%;
+  background-color: white;
+  padding: 3%;
+  height: calc(var(--frame-height) * 0.65);
+  overflow-y: auto;
+  border-radius: 16px;
 }
 .mobile__bg {
   background-color: #d6ecf8;
   width: 100%;
   height: 100%;
-}
-.app {
-  width: 100vw;
-  height: 100vh;
 }
 .mobile__frame {
   position: absolute;
@@ -23,9 +32,16 @@
 .mobile__frame-img {
   height: var(--frame-height);
 }
+
+.mobile__heading {
+  text-align: center;
+  margin: 10px 0;
+}
+
 @media only screen and (min-width: 769px) {
   .editor__container {
     height: 35vh;
+    width: 40vw;
   }
   .desktop__container {
     width: 100vw;
